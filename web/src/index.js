@@ -1,9 +1,13 @@
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './../node_modules/bulma/css/bulma.css';
-import './index.css';
 import App from './App';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
+
+library.add(faCaretUp);
 
 ReactDOM.render(
   <React.StrictMode>

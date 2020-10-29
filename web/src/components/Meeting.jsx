@@ -1,5 +1,7 @@
+import { gql, useSubscription } from '@apollo/client';
 import React from 'react';
-import { useSubscription, gql } from '@apollo/client';
+import { v4 } from 'uuid';
+import { cookies, setOptions } from '../utils/cookies';
 import Question from './Question';
 
 const MEETING = gql`
@@ -9,11 +11,12 @@ const MEETING = gql`
       name
       code
       description
-      questions {
+      questions(order_by: { points: desc, created_at: desc }) {
         id
         author_name
         description
         points
+        created_at
       }
     }
   }
@@ -24,6 +27,11 @@ const Meeting = ({
     params: { id },
   },
 }) => {
+  const guestId = v4();
+  if (!cookies.get('iq_guestId')) {
+    cookies.set('iq_guestId', guestId, setOptions);
+  }
+
   const { loading, error, data } = useSubscription(MEETING, {
     variables: { id },
   });
@@ -51,8 +59,11 @@ const Meeting = ({
                   questions.map((q) => (
                     <Question
                       key={q.id}
+                      id={q.id}
                       authorName={q.author_name}
                       description={q.description}
+                      points={q.points}
+                      createdAt={q.created_at}
                     />
                   ))}
               </div>
