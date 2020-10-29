@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLazyQuery, gql } from '@apollo/client';
 import Search from './Search';
+import { Link } from 'react-router-dom';
 
 const SEARCH_MEETING = gql`
   query SearchMeeting($code: String) {
@@ -39,7 +40,12 @@ const MeetingSearch = () => {
                   <div>
                     <h2 className="title">{data.meetings[0].name}</h2>
                     <h3 className="subtitle">#{data.meetings[0].code}</h3>
-                    <button className="button is-black">Join</button>
+                    <Link
+                      to={`/meeting/${data.meetings[0].id}`}
+                      className="button is-black"
+                    >
+                      Join
+                    </Link>
                   </div>
                 )}
               </div>

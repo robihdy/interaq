@@ -1,24 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ApolloProvider } from '@apollo/client';
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import './../node_modules/bulma/css/bulma.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: 'https://interaq.hasura.app/v1/graphql',
-  }),
-});
-
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
