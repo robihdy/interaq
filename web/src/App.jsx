@@ -8,6 +8,7 @@ import {
 import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/link-ws';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import CreateMeeting from './components/CreateMeeting';
 import Meeting from './components/Meeting';
 import MeetingSearch from './components/MeetingSearch';
 
@@ -47,6 +48,7 @@ function App() {
       <ApolloProvider client={client}>
         <Switch>
           <Route exact path="/meeting/:id" component={Meeting} />
+          <Route exact path="/create-meeting" component={CreateMeeting} />
           <Route exact path="/" component={MeetingSearch} />
         </Switch>
       </ApolloProvider>

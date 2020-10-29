@@ -20,15 +20,15 @@ const CREATE_QUESTION = gql`
 `;
 
 const CreateQuestion = ({ meetingId }) => {
-  const [authorName, setAuthorName] = useState(null);
-  const [description, setDescription] = useState(null);
+  const [authorName, setAuthorName] = useState('');
+  const [description, setDescription] = useState('');
   const [createQuestion, { loading }] = useMutation(CREATE_QUESTION);
 
   const handleSubmit = () => {
     createQuestion({ variables: { meetingId, authorName, description } })
       .then(() => {
-        setAuthorName(null);
-        setDescription(null);
+        setAuthorName('');
+        setDescription('');
       })
       .catch((e) => {
         setDescription(e.message);
