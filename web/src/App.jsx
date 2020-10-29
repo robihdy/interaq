@@ -1,7 +1,9 @@
+const { default: MeetingSearch } = require("./components/MeetingSearch");
+
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <MeetingSearch />
     </div>
   );
 }
