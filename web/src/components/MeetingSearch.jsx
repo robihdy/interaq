@@ -34,6 +34,9 @@ const MeetingSearch = () => {
                   search({ variables: { code: inputVal } });
                 }}
               />
+              <p className="subtitle" onClick={() => setInputVal('mIyr')}>
+                Demo meeting code: mIyr
+              </p>
             </div>
             <div className="column has-text-centered">
               {loading && <p className="title">Loading...</p>}
